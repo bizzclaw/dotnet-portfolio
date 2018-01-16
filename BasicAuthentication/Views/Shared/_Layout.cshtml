@@ -7,6 +7,24 @@
         <link rel="stylesheet" href="~/css/master.css">
     </head>
     <body>
-        @RenderBody()
-    </body>
+ 		<div>
+			<h1>Pile Underflow</h1>
+
+			@if (User.Identity.IsAuthenticated)
+			{
+			    <p>Hello @User.Identity.Name!</p>
+			    @using(Html.BeginForm("LogOff", "Account"))
+			    {
+			        <input type="submit" class="btn btn-default" value="Log out" />
+			    }
+			}
+			else
+			{
+			    <p>@Html.ActionLink("Register", "Register") | @Html.ActionLink("Log in", "Login")</p>
+			}
+            <hr />
+	        @RenderBody()
+
+		</div>
+	</body>
 </html>

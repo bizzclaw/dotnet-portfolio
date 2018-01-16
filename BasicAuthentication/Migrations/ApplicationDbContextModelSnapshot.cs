@@ -26,7 +26,7 @@ namespace BasicAuthentication.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.Property<bool>("EmailConfirmed");
 
@@ -35,10 +35,10 @@ namespace BasicAuthentication.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.Property<string>("PasswordHash");
 
@@ -51,7 +51,7 @@ namespace BasicAuthentication.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.HasKey("Id");
 
@@ -65,7 +65,7 @@ namespace BasicAuthentication.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("BasicAuthentication.Models.Item", b =>
+            modelBuilder.Entity("BasicAuthentication.Models.Question", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -78,7 +78,7 @@ namespace BasicAuthentication.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Items");
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -90,10 +90,10 @@ namespace BasicAuthentication.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<string>("Name")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.Property<string>("NormalizedName")
-                        .HasMaxLength(256);
+                        .HasMaxLength(127);
 
                     b.HasKey("Id");
 
@@ -188,7 +188,7 @@ namespace BasicAuthentication.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("BasicAuthentication.Models.Item", b =>
+            modelBuilder.Entity("BasicAuthentication.Models.Question", b =>
                 {
                     b.HasOne("BasicAuthentication.Models.ApplicationUser", "User")
                         .WithMany()

@@ -45,17 +45,15 @@ namespace BasicAuthentication
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
 
-			// This is new
 			app.UseIdentity();
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
 					name: "default",
-					template: "{controller=Account}/{action=Index}/{id?}");  // <-There is an edit here
+					template: "{controller=Home}/{action=Index}/{id?}");
 			});
 
             loggerFactory.AddConsole();
