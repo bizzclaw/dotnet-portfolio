@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BasicAuthentication.Models
@@ -8,7 +8,7 @@ namespace BasicAuthentication.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string Text { get; set; }
         public virtual ApplicationUser User { get; set; }
 
     }
