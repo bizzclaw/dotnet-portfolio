@@ -27,9 +27,27 @@ __GIT CLI__ [Git-SCM](https://git-scm.com/downloads)
 ### User Stories
 as a user, I want the main page to display some information about the developer, showing a hero at the top. below the hero will be two boxes, one will be titled "blog", the second will be titled "About"
 
+as a user, I want to be able to sign in using google authentication.
+
 as a User, I want to be able to click on "Blog" and switch to a view that shows up to 5 blog posts.
 
 as a User, I want to be able to search the blog, which will search all blog posts for matching strings. I want search results to populate without reloading the page.
 
+As a user, I want to be able to click on the title of a blog post to view the full article.
+
+As a user, I want to be able to see up to 10 user comments on the bottom of a blog post, and submit comments if I'm logged in with google.
+
+As a user, I want to be able to sort comments by post date ascending or descending.
+
+As a user, I want comments to be sorted without reloading the page.
+
+as a user, I want to be able to click "more comments" and swap to a page that shows older comments
+
+As a user, I want to be able to delete or edit my own posts.
+
+as an admin, I want to be able to delete or edit all posts.
+
 as a User, I want to be able to select the "About Page" from the home, which will display a new view that shows information about the developer, as well as a list of projects
 as a User, I want to be able to search all of the projects by name, results will be displayed without reloading the page.
+
+As an admin, I want to be able to submit a new project with a title, main image and description.
