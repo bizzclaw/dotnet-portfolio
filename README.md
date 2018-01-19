@@ -17,6 +17,19 @@ __GIT CLI__ [Git-SCM](https://git-scm.com/downloads)
 
 ## Build Instructions
 1. Clone with git to your local machine.
-2. cd into Portfolio/Portfolio and run `dotnet restore` with your terminal/command prompt
-3. Open "Portfolio.sln" with Visual Studio
-4. __Run__ from visual studio, a web page should open displaying the site.
+2. cd into Portfolio/Portfolio with your terminal/command prompt
+3. run `dotnet restore`, this will install needed packaged for the app.
+4. run `dotnet ef database update`, this will prepare the database for the app.
+5. Open "Portfolio.sln" with Visual Studio
+6. Click "__Run__" from visual studio, a web page will open displaying the site.
+
+## Design
+### User Stories
+as a user, I want the main page to display some information about the developer, showing a hero at the top. below the hero will be two boxes, one will be titled "blog", the second will be titled "About"
+
+as a User, I want to be able to click on "Blog" and switch to a view that shows up to 5 blog posts.
+
+as a User, I want to be able to search the blog, which will search all blog posts for matching strings. I want search results to populate without reloading the page.
+
+as a User, I want to be able to select the "About Page" from the home, which will display a new view that shows information about the developer, as well as a list of projects
+as a User, I want to be able to search all of the projects by name, results will be displayed without reloading the page.
