@@ -27,7 +27,7 @@ __GIT CLI__ [Git-SCM](https://git-scm.com/downloads)
 ### User Stories
 as a user, I want the main page to display some information about the developer, showing a hero at the top. below the hero will be two boxes, one will be titled "blog", the second will be titled "About"
 
-as a user, I want to be able to sign in using google authentication.
+as a user, I want to be able to sign in using standard authentication.
 
 as a User, I want to be able to click on "Blog" and switch to a view that shows up to 5 blog posts.
 
@@ -35,7 +35,7 @@ as a User, I want to be able to search the blog, which will search all blog post
 
 As a user, I want to be able to click on the title of a blog post to view the full article.
 
-As a user, I want to be able to see up to 10 user comments on the bottom of a blog post, and submit comments if I'm logged in with google.
+As a user, I want to be able to see up to 10 user comments on the bottom of a blog post, and submit comments if I'm logged in.
 
 As a user, I want to be able to sort comments by post date ascending or descending.
 

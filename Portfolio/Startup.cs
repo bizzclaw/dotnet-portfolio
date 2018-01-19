@@ -19,12 +19,6 @@ namespace Portfolio
 			var builder = new ConfigurationBuilder()
 				.SetBasePath(env.ContentRootPath)
 				.AddJsonFile("appsettings.json");
-
-            if (env.IsDevelopment())
-            {
-                builder.AddUserSecrets<Startup>();
-            }
-
 			Configuration = builder.Build();
 		}
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -55,14 +49,7 @@ namespace Portfolio
         {
 
 			app.UseIdentity();
-
-            app.UseGoogleAuthentication(new GoogleOptions()
-            {
-                ClientId = Configuration["GoogleAuth:client_id"],
-                ClientSecret = Configuration["GoogleAuth:client_secret"]
-            });
-
-            app.UseMvc(routes =>
+			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
 					name: "default",
