@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasicAuthentication.Models
+namespace Portfolio.Models
 {
 	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 	{

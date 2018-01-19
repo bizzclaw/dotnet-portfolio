@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using BasicAuthentication.Models;
+using Portfolio.Models;
 using System.Threading.Tasks;
-using BasicAuthentication.ViewModels;
+using Portfolio.ViewModels;
 
-namespace BasicAuthentication.Controllers
+namespace Portfolio.Controllers
 {
 	public class AccountController : Controller
 	{
