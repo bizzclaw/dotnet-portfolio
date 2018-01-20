@@ -49,6 +49,7 @@ namespace Portfolio
         {
 
 			app.UseIdentity();
+            app.UseStaticFiles();
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(

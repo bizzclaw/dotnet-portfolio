@@ -5,6 +5,13 @@
     <UserSecretsId>be7c668d-6d47-4313-983c-315298d201f2</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Questions\**" />
+    <Content Remove="Views\Questions\**" />
+    <EmbeddedResource Remove="Views\Questions\**" />
+    <None Remove="Views\Questions\**" />
+  </ItemGroup>
+
  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.1" />
@@ -29,7 +36,6 @@
   <Folder Include="Views\Account\" />
   <Folder Include="Views\Shared\" />
   <Folder Include="ViewModels\" />
-  <Folder Include="Views\Questions\" />
   <Folder Include="Views\Home\" />
 </ItemGroup>
 </Project>
