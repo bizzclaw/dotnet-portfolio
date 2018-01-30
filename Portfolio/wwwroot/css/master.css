@@ -1,12 +1,21 @@
+/*Color Theme*/
+:root {
+  --col_heading: rgb(244,135,74);
+  --col_text: #8dc2e1;
+  --col_outline: rgb(25,43,110);
+  --col_bg: #3a3f3f;
+  --col_bg_heading: rgb(29,33,42);
+}
+
 ﻿@font-face {
     font-family: 'Triggering Fanfares';
     src: url('../fonts/triggering_fanfares/triggering_fanfares.ttf');
 }
 
 body {
+    color: var(--col_text);
     background-color: #3a3f3f;
-    color: #8dc2e1;
-    background-image: url("../images/fancyhexes.png");
+    /*background-image: url("../images/fancyhexes.png");*/
     background-position: top;
     background-size: cover;
     background-attachment: fixed;
