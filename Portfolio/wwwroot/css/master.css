@@ -1,10 +1,11 @@
 /*Color Theme*/
 :root {
-  --col_heading: rgb(244,135,74);
-  --col_text: #8dc2e1;
-  --col_outline: rgb(25,43,110);
-  --col_bg: rgb(29,33,42);
-  --col_bg_heading: rgb(29,33,42);
+    --col_heading: rgb(244,135,74);
+    --col_text: #8dc2e1;
+    --col_outline: rgb(25,43,110);
+    --col_bg: rgb(29,33,42);
+    --col_bg_heading: rgb(29,33,42);
+    --col_bg2: #3a3f3f;
 }
 
 ﻿@font-face {
@@ -21,6 +22,12 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: 'Triggering Fanfares'
+}
+
+.page-lower {
+    padding: 0px;
+    background-color: var(--col_bg2);
+    min-height: 50vh;
 }
 
 .clickable {
@@ -48,4 +55,18 @@ body {
 .skills img {
     width: 100%;
     height: auto;
+}
+
+.blogpost-listed {
+    border-left-style: solid;
+    border-left-color: var(--col_text);
+    border-left-width: 10px;
+    padding-left: 15px;
+}
+
+.blogpost-listed:hover {
+    border-left-color: var(--col_heading);
+    cursor: pointer;
+    background-color: var(--col_text);
+    color: var(--col_bg); 
 }

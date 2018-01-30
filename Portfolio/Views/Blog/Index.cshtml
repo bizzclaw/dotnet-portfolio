@@ -1,0 +1,23 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Joseph Tomlinson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @foreach (var blogPost in Model)
+    {
+        <div class="blogpost-listed">
+            <h3>@blogPost.Title</h3>
+            <h5 class="timestamp" value ="@blogPost.Date"></h5>
+            <p>@blogPost.PartialBody(256)</p>
+        </div>
+        
+    }
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Create Post", "Create", "Blog")
+    }
+</div>

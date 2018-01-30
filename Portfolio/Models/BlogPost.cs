@@ -17,5 +17,15 @@ namespace Portfolio.Models
         public string Date { get; set; }
         [Column(TypeName = "text")]
         public string Body { get; set; }
+
+        public void TimeStamp()
+        {
+            Date = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public string PartialBody(int maxLength = 40)
+        {
+            return Body.Substring(0, Math.Min(maxLength, Body.Length));
+        }
     }
 }
