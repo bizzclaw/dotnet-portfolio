@@ -42,5 +42,16 @@ namespace Portfolio.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(int id = 1)
+        {
+            BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
+
+            if (post == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(post);
+        }
     }
 }

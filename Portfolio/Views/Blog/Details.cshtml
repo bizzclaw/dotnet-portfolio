@@ -1,0 +1,14 @@
+﻿@using System.Security.Claims
+@model Portfolio.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Joseph Tomlinson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>@Model.Title</h1>
+    <h5 class="timestamp" value="@Model.Date"></h5>
+
+    <p>@Model.Body</p>
+</div>
