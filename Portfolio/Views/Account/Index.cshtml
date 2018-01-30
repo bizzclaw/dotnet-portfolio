@@ -1,6 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@using System.Security.Claims
 
-@using System.Security.Claims
+@if (Model < 1)
+{
+    @Html.ActionLink("Admin Register", "Register")
+}
+else
+{
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        @Html.ActionLink("Log Out", "LogOff", "Account");
+    }
+    else
+    {
+
+        @Html.ActionLink("Log In", "LogIn");
+    }
+}

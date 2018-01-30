@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Portfolio.Models;
 using System.Threading.Tasks;
 using Portfolio.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Controllers
 {
@@ -12,6 +13,7 @@ namespace Portfolio.Controllers
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
 
+
 		public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext db)
 		{
 			_userManager = userManager;
@@ -19,10 +21,11 @@ namespace Portfolio.Controllers
 			_db = db;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
-		}
+            int count = await _db.Users.CountAsync();
+            return View(count);
+        }
 
         public IActionResult Register()
         {
@@ -32,11 +35,20 @@ namespace Portfolio.Controllers
         [HttpPost]
 		public async Task<IActionResult> Register(RegisterViewModel model)
 		{
+            int count = await _db.Users.CountAsync();
+
+            if (count >= 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var user = new ApplicationUser { UserName = model.Email };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+
+                Microsoft.AspNetCore.Identity.SignInResult logIn = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -55,7 +67,7 @@ namespace Portfolio.Controllers
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -63,11 +75,10 @@ namespace Portfolio.Controllers
             }
         }
 
-		[HttpPost]
 		public async Task<IActionResult> LogOff()
 		{
 			await _signInManager.SignOutAsync();
-			return RedirectToAction("Index");
+			return RedirectToAction("Index", "Home");
 		}
 	}
 }

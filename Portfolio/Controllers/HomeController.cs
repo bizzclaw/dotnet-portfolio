@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,9 +30,11 @@ namespace Portfolio.Controllers
         }
 
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(UserManager<ApplicationUser> userManager, ApplicationDbContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
 
@@ -47,17 +51,18 @@ namespace Portfolio.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult UpdateInfo(PageInfo info)
         {
 
-            if (info.Id != -1)
-            {
-                _db.Entry(info).State = EntityState.Modified;
-            }
-            else
+            if (info.Id == -1)
             {
                 info.Id = 1;
                 _db.pageinfo.Add(info);
+            }
+            else
+            {
+                _db.Entry(info).State = EntityState.Modified;
             }
             _db.SaveChanges();
 

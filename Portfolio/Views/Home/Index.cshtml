@@ -4,8 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using System.Security.Claims
+
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+        //Account Widget
+        $.ajax({
+            type: "GET",
+            dataType: "HTML",
+            url: "@Url.Action("Index", "Account")",
+            success: function(result) {
+                $("#account-widget").html(result);
+            }
+        })
+
+        //Info Edit
         $("#edit-info").click(function() {
             $(".info-panel").hide();
             $.ajax({
@@ -37,7 +50,12 @@
         <div class="col-md-7 info-panel">
             <h2>@Model.Title</h2>
             <p>@Model.MainInfo</p>
-            <p class="clickable" id="edit-info">Edit..</p>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p class="clickable" id="edit-info">Edit..</p>
+            }
         </div>
     </div>
+    <div class="text-center" id="account-widget"></div>
 </div>

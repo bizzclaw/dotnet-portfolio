@@ -7,18 +7,27 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
+<h2>Register Admin</h2>
+<p>There can only be one!</p>
 <hr />
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
-    @Html.LabelFor(user => user.Email)
-    @Html.TextBoxFor(user=> user.Email)
+<div class="container">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
 
-    @Html.LabelFor(user=> user.Password)
-    @Html.PasswordFor(user=> user.Password)
+        <div class="form-group">
+            @Html.LabelFor(user => user.Email)
+            @Html.TextBoxFor(user => user.Email, new { @class = "form-control" })
+        </div>
 
-    @Html.LabelFor(user=> user.ConfirmPassword)
-    @Html.PasswordFor(user=> user.ConfirmPassword)
+        <div class="form-group">
+            @Html.LabelFor(user => user.Password)
+            @Html.PasswordFor(user => user.Password, new { @class = "form-control" })
+        </div>
 
-    <input type="submit" value="Register" />
-}
+        <div class="form-group">
+            @Html.LabelFor(user => user.ConfirmPassword)
+            @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="Register" class="btn" />
+    }
+</div>
