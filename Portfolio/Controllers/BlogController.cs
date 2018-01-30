@@ -53,5 +53,24 @@ namespace Portfolio.Controllers
             }
             return View(post);
         }
+
+        public IActionResult Edit(int id = 1)
+        {
+            BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
+
+            if (post == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(post);
+        }
+         
+        [HttpPost]
+        public IActionResult Edit(BlogPost post)
+        {
+            _db.Entry(post).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Details", post.Id);
+        }
     }
 }

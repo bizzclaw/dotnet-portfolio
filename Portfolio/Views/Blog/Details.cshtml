@@ -11,4 +11,11 @@
     <h5 class="timestamp" value="@Model.Date"></h5>
 
     <p>@Model.Body</p>
+
+    <input type="button" class="btn" value="Return" onclick="location.href='@Url.Action("Index")'" />
+    @if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" class="btn" value="Edit" onclick="location.href='@Url.Action("Edit", new {Id = Model.Id})'" />
+        <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", new {Id = Model.Id})'" />
+    }
 </div>

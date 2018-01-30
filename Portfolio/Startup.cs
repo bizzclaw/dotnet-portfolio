@@ -48,7 +48,11 @@ namespace Portfolio
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
 
-			app.UseIdentity();
+            //if (env.IsDevelopment())
+            //{
+            app.UseDeveloperExceptionPage();
+            //}
+            app.UseIdentity();
             app.UseStaticFiles();
 			app.UseMvc(routes =>
 			{
@@ -58,11 +62,6 @@ namespace Portfolio
 			});
 
             loggerFactory.AddConsole();
-
-            //if (env.IsDevelopment())
-            //{
-                app.UseDeveloperExceptionPage();
-            //}
 
             app.Run(async (context) =>
             {

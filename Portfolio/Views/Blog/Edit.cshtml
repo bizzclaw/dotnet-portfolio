@@ -1,0 +1,25 @@
+﻿@model Portfolio.Models.BlogPost
+@{
+    ViewData["Title"] = "Joseph Tomlinson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Submit New Blog Post</h1>
+
+    @using (Html.BeginForm("Edit", "Blog", FormMethod.Post))
+    {
+        @Html.HiddenFor(blogPost => blogPost.Date)
+        <div class="form-group">
+            @Html.LabelFor(blogPost => blogPost.Title)
+            @Html.TextBoxFor(blogPost => blogPost.Title, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(blogPost => blogPost)
+            @Html.TextAreaFor(blogPost => blogPost.Body, new { @class = "form-control" })
+        </div>
+        <input type="button" class="btn" value="Cancel" onclick="location.href='@Url.Action("Details", new {Id = Model.Id})'" />
+        <input type="submit" class="btn" value="Confirm Edit" />
+    }
+</div>
