@@ -5,9 +5,11 @@ namespace Portfolio.Models
 {
 	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 	{
-		public ApplicationDbContext(DbContextOptions options) : base(options)
-		{
+        public DbSet<PageInfo> pageinfo { get; set; }
+        public DbSet<BlogPost> blogposts { get; set; }
 
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+		{
 		}
 		protected override void OnModelCreating(ModelBuilder builder)
 		{

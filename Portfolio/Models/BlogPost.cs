@@ -15,7 +15,7 @@ namespace Portfolio.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "text")]
         public string Body { get; set; }
     }
 }

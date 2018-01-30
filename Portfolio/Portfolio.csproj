@@ -31,10 +31,8 @@
 
 <ItemGroup>
   <Folder Include="Controllers\" />
-  <Folder Include="Views\" />
   <Folder Include="Views\Account\" />
   <Folder Include="Views\Shared\" />
   <Folder Include="ViewModels\" />
-  <Folder Include="Views\Home\" />
 </ItemGroup>
 </Project>

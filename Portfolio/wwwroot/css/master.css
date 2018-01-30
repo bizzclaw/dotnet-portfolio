@@ -3,7 +3,7 @@
   --col_heading: rgb(244,135,74);
   --col_text: #8dc2e1;
   --col_outline: rgb(25,43,110);
-  --col_bg: #3a3f3f;
+  --col_bg: rgb(29,33,42);
   --col_bg_heading: rgb(29,33,42);
 }
 
@@ -14,7 +14,7 @@
 
 body {
     color: var(--col_text);
-    background-color: #3a3f3f;
+    background-color: var(--col_bg);
     /*background-image: url("../images/fancyhexes.png");*/
     background-position: top;
     background-size: cover;
@@ -23,12 +23,17 @@ body {
     font-family: 'Triggering Fanfares'
 }
 
-h1 {
-    font-size: 60px;
+.clickable {
+    text-decoration: underline;
 }
 
-.hero {
+.clickable:hover {
+    color: var(--col_heading);
+    cursor: pointer;
+}
 
+.info-panel {
+    margin-top: 10%;
 }
 
 .hero img {

@@ -9,9 +9,12 @@ namespace Portfolio.Models
     [Table(DbTable)]
     public class PageInfo
     {
+        [Key]
+        public int Id { get; set; }
         public const string DbTable = "pageinfo";
+        public string Name { get; set; }
         public string Title { get; set; }
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "text")]
         public string MainInfo { get; set; }
     }
 }
