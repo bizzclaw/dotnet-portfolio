@@ -20,7 +20,7 @@
 
         //Info Edit
         $("#edit-info").click(function() {
-            $(".info-panel").hide();
+            $(".info-body").hide();
             $.ajax({
                 type: "GET",
                 dateType: "HTML",
@@ -46,16 +46,31 @@
                 <img src="~/images/SkillHex.png" />
             </div>
         </div>
-        <div id="edit-info-form" class="hidden"></div>
         <div class="col-md-7 info-panel">
-            <h2>@Model.Title</h2>
-            <p>@Model.MainInfo</p>
+            <div id="edit-info-form" class="hidden">
+                <h2>Loading Form...</h2>
+            </div>
+            <div class="info-body">
+                <h2>@Model.Title</h2>
+                <p>@Model.MainInfo</p>
 
-            @if (User.Identity.IsAuthenticated)
-            {
-                <p class="clickable" id="edit-info">Edit..</p>
-            }
+                @if (User.Identity.IsAuthenticated)
+        {
+            <p class="clickable" id="edit-info">Edit..</p>
+}
+            </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Blog</h2>
+            <p>Lorem Ipsum</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Github Projects</h2>
+        </div>
+    </div>
+
     <div class="text-center" id="account-widget"></div>
 </div>
