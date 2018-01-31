@@ -18,6 +18,8 @@ namespace Portfolio.Models
         [Column(TypeName = "text")]
         public string Body { get; set; }
 
+        public virtual ICollection<BlogComment> BlogComments { get; set; }
+
         public void TimeStamp()
         {
             Date = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");

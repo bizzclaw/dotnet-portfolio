@@ -123,10 +123,11 @@ namespace Portfolio.Controllers
 
         public IActionResult BlogCommentList(int id = 1)
         {
+            System.Diagnostics.Debug.WriteLine(id);
             BlogCommentListViewModel blogCommentView = new BlogCommentListViewModel
             {
                 BlogPost = _db.blogposts.FirstOrDefault(b => b.Id == id),
-                BlogCommentList = _db.blogcomments.OrderByDescending(c => c.BlogPostId == id)
+                BlogCommentList = _db.blogcomments.OrderByDescending(c => c.Id).Where(c => c.BlogPostId == id)
             };
             return View(blogCommentView);
         }

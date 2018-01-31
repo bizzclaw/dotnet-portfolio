@@ -41,9 +41,9 @@
     @if (User.Identity.IsAuthenticated)
     {
         <input type="button" class="btn" value="Edit" onclick="location.href='@Url.Action("Edit", new {Id = Model.Id})'" />
-        <input type="button" class="btn btn-info" type="button" id="make-comment" value="Add Comment" />
         <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", new {Id = Model.Id})'" />
     }
+    <input type="button" class="btn btn-info" type="button" id="make-comment" value="Add Comment" />
     <div id="comment-box">
       <div id="comment-create"></div>
       <div id="comment-list"></div>
