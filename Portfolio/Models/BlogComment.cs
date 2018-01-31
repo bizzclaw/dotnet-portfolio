@@ -7,7 +7,7 @@ namespace Portfolio.Models
     [Table(DbTable)]
     public class BlogComment
     {
-        public const string DbTable = "blogcomment";
+        public const string DbTable = "blogcomments";
 
         private string _text;
         private string _contactInfo;
@@ -16,12 +16,11 @@ namespace Portfolio.Models
         [Key]
         public int Id { get; set; }
         public int BlogPostId { get; set; }
-        public string ContactInfo { get; set; }
         public string Text {
             get => _text;
             set => _text = value.Length > 255 ? value.Substring(0, 255) : value;
         }
-        public string Contact {
+        public string ContactInfo {
             get => _contactInfo;
             set => _contactInfo = value.Length > 255 ? value.Substring(0, 255) : value;
         }

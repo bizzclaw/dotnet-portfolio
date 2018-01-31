@@ -106,9 +106,9 @@ namespace Portfolio.Controllers
         public IActionResult BlogComment(int id = 1)
         {
           BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
-           BlogCommentViewModel blogCommentView = new BlogCommentViewModel {
-            BlogPost = post,
-            BlogComment = new BlogComment()
+          BlogCommentViewModel blogCommentView = new BlogCommentViewModel {
+                BlogPost = post,
+                BlogComment = new BlogComment()
           };
           return View(blogCommentView);
         }
@@ -116,9 +116,28 @@ namespace Portfolio.Controllers
         [HttpPost]
         public IActionResult BlogComment(BlogCommentViewModel blogCommentView)
         {
-          _db.blogcomments.Add(blogCommentView.BlogComment);
-          _db.SaveChanges();
-          return RedirectToAction("Details", new { Id = blogCommentView.BlogComment.BlogPostId });
+              _db.blogcomments.Add(blogCommentView.BlogComment);
+              _db.SaveChanges();
+              return RedirectToAction("Details", new { Id = blogCommentView.BlogComment.BlogPostId });
+        }
+
+        public IActionResult BlogCommentList(int id = 1)
+        {
+            BlogCommentListViewModel blogCommentView = new BlogCommentListViewModel
+            {
+                BlogPost = _db.blogposts.FirstOrDefault(b => b.Id == id),
+                BlogCommentList = _db.blogcomments.OrderByDescending(c => c.BlogPostId == id)
+            };
+            return View(blogCommentView);
+        }
+
+        [Authorize]
+        public IActionResult BlogCommentDelete(int id) {
+            BlogComment comment = _db.blogcomments.FirstOrDefault(c => c.Id == id);
+            int blogPostId = comment.BlogPostId;
+            _db.blogcomments.Remove(comment);
+            _db.SaveChanges();
+            return RedirectToAction("Details", new {Id = blogPostId});
         }
     }
 }

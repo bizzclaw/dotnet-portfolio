@@ -8,7 +8,7 @@ using Portfolio.Models;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180131011329_AddBlogComments")]
+    [Migration("20180131020823_AddBlogComments")]
     partial class AddBlogComments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,15 +182,13 @@ namespace Portfolio.Migrations
 
                     b.Property<int>("BlogPostId");
 
-                    b.Property<string>("Contact");
-
                     b.Property<string>("ContactInfo");
 
                     b.Property<string>("Text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("blogcomment");
+                    b.ToTable("blogcomments");
                 });
 
             modelBuilder.Entity("Portfolio.Models.BlogPost", b =>

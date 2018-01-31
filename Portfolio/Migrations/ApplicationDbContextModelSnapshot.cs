@@ -181,15 +181,13 @@ namespace Portfolio.Migrations
 
                     b.Property<int>("BlogPostId");
 
-                    b.Property<string>("Contact");
-
                     b.Property<string>("ContactInfo");
 
                     b.Property<string>("Text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("blogcomment");
+                    b.ToTable("blogcomments");
                 });
 
             modelBuilder.Entity("Portfolio.Models.BlogPost", b =>

@@ -8,6 +8,16 @@
 
 <script>
   $(document).ready(function() {
+    $.ajax({
+      type: "GET",
+      dateType: "HTML",
+      url: "@Url.Action("BlogCommentList", new {Id = Model.Id})",
+      success: function(result) {
+          $("#comment-list").html(result);
+      }
+    })
+
+    //Blog Post
     $("#make-comment").click(function() {
       $.ajax({
           type: "GET",
