@@ -1,0 +1,17 @@
+﻿@model Portfolio.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Delete Blog Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-center">
+    <h2>Are you sure you want to delete @Model.Title?</h2>
+    <h3>@Html.DisplayNameFor(model => model.Id): @Html.DisplayFor(model => model.Id)</h3>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", new { id = Model.Id })'">No, Cancel</button>
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    }
+</div>

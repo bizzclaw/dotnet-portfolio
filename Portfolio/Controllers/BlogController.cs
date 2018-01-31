@@ -24,7 +24,8 @@ namespace Portfolio.Controllers
 
         public IActionResult Index(int startPage = 0)
         {
-            return View(_db.blogposts.OrderByDescending(m => m.Id).Skip(startPage).Take(10));
+            //return View(_db.blogposts.OrderByDescending(m => m.Id).Skip(startPage).Take(10));
+            return View(_db.blogposts.OrderByDescending(m => m.Id));
         }
 
         [Authorize]
@@ -54,6 +55,7 @@ namespace Portfolio.Controllers
             return View(post);
         }
 
+        [Authorize]
         public IActionResult Edit(int id = 1)
         {
             BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
@@ -64,13 +66,35 @@ namespace Portfolio.Controllers
             }
             return View(post);
         }
-         
+
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(BlogPost post)
         {
             _db.Entry(post).State = EntityState.Modified;
             _db.SaveChanges();
-            return RedirectToAction("Details", post.Id);
+            return RedirectToAction("Details", new {Id = post.Id });
+        }
+
+        [Authorize]
+        public IActionResult Delete(int id = 1)
+        {
+            BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
+
+            if (post == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(post);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Delete(BlogPost removePost)
+        {
+            _db.blogposts.Remove(removePost);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

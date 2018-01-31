@@ -25,6 +25,10 @@ namespace Portfolio.Models
 
         public string PartialBody(int maxLength = 40)
         {
+            if (Body == null)
+            {
+                return "--";
+            }
             return Body.Substring(0, Math.Min(maxLength, Body.Length));
         }
     }
