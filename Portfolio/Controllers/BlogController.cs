@@ -96,5 +96,10 @@ namespace Portfolio.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult BlogPreview()
+        {
+            return View(_db.blogposts.OrderByDescending(m => m.Id).Skip(0).Take(3));
+        }
     }
 }

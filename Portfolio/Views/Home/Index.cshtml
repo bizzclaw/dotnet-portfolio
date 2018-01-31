@@ -8,16 +8,31 @@
 
 <script>
     $(document).ready(function () {
-        //Account Widget
+
+        //Info Edit
+        $("#edit-info").click(function() {
+            $(".info-body").hide();
+            $.ajax({
+                type: "GET",
+                dateType: "HTML",
+                url: "@Url.Action("UpdateInfo")",
+                success: function(result) {
+                    let editPanel = $("#edit-info-form");
+                    editPanel.removeClass("hidden");
+                    editPanel.html(result);
+                }
+            });
+        });
+
+        //Blog Preview
         $.ajax({
             type: "GET",
             dataType: "HTML",
-            url: "@Url.Action("Index", "Account")",
+            url: "@Url.Action("BlogPreview", "Blog")",
             success: function(result) {
-                $("#account-widget").html(result);
+                $("#blog-preview").html(result);
             }
         })
-
 
         //Account Widget
         $.ajax({
@@ -59,7 +74,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h2>Blog</h2>
-                <div id="#blog-preview"></div>
+                <div id="blog-preview"></div>
                 @Html.ActionLink("More Posts..", "Index", "Blog")
             </div>
             <div class="col-md-6">

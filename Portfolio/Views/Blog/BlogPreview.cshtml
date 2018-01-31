@@ -1,1 +1,5 @@
-﻿
+﻿@foreach (var blogPost in Model)
+{
+    <h3>@blogPost.Title</h3>
+    <h5>@blogPost.PartialBody(80)</h5>
+}
