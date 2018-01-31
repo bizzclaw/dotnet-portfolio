@@ -46,6 +46,14 @@
     <input type="button" class="btn btn-info" type="button" id="make-comment" value="Add Comment" />
     <div id="comment-box">
       <div id="comment-create"></div>
-      <div id="comment-list"></div>
+        @foreach (var comment in Model.BlogComments)
+        {
+            <h3>@comment.Author</h3>
+            <p>@comment.Text</p>
+            @if (User.Identity.IsAuthenticated) {
+
+                @Html.ActionLink("Delete", "BlogCommentDelete", "Blog", new {Id = comment.Id})
+            }
+        }
     </div>
 </div>

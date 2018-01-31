@@ -1,9 +1,0 @@
-@foreach (var comment in Model.BlogCommentList)
-{
-    <h3>@comment.Author</h3>
-    <p>@comment.Text</p>
-    @if (User.Identity.IsAuthenticated) {
-      
-      @Html.ActionLink("Delete", "BlogCommentDelete", "Blog", new {Id = comment.Id})
-    }
-}
