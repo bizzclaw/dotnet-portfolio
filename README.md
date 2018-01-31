@@ -3,6 +3,7 @@ Joseph Tomlinson
 
 A Web application programmed in .NET 1.1 meant to show my skills as a developer.
 
+![Preview](https://i.imgur.com/VorW450.png)
 
 ## Requirements for building
 __.NET 1.1 SDK__ [Windows](https://download.microsoft.com/download/F/4/F/F4FCB6EC-5F05-4DF8-822C-FF013DF1B17F/dotnet-dev-win-x64.1.1.4.exe) | [Mac OSX](https://download.microsoft.com/download/F/4/F/F4FCB6EC-5F05-4DF8-822C-FF013DF1B17F/dotnet-dev-osx-x64.1.1.4.pkg)
