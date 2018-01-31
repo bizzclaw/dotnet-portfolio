@@ -1,4 +1,6 @@
-﻿@model Portfolio.Models.PageInfo
+﻿@using Portfolio.Models;
+
+@model Portfolio.Models.PageInfo
 @{
     ViewData["Title"] = "Joseph Tomlinson";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -79,6 +81,11 @@
             </div>
             <div class="col-md-6">
                 <h2>Github Projects</h2>
+                @foreach (var project in Model.Projects) 
+                {
+                    <h1>@project.Name</h1>
+
+                }  
             </div>
         </div>
 

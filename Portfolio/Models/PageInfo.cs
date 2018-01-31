@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
@@ -16,5 +16,8 @@ namespace Portfolio.Models
         public string Title { get; set; }
         [Column(TypeName = "text")]
         public string MainInfo { get; set; }
+
+        [NotMapped]
+        public List<Project> Projects;
     }
 }

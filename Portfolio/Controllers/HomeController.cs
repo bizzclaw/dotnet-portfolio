@@ -16,16 +16,18 @@ namespace Portfolio.Controllers
     {
         // GET: /<controller>/
 
-        public PageInfo GetMainInfo()
+        public async Task<PageInfo> GetMainInfo()
         {
             PageInfo info = _db.pageinfo.FirstOrDefault();
 
             info = info ?? new PageInfo
             {
                 Id = -1,
-                Title = "Current Position",
-                MainInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                Title = "Programming Student",
+                MainInfo = "I've been coding since 2013 where I started by writing games in Lua. I have a passion for creating robust and flexible systems to support accessibility and security. I'm excited to bring my experience from working on humble project into working on something completely new."
             };
+
+            info.Projects = await GitHub.GetProjects(3);
             return info;
         }
 
@@ -38,11 +40,9 @@ namespace Portfolio.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-
-
-            return View(GetMainInfo());
+            return View(await GetMainInfo());
         }
 
         public IActionResult UpdateInfo()
