@@ -6,6 +6,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+  $(document).ready(function() {
+    $("#make-comment").click(function() {
+      $.ajax({
+          type: "GET",
+          dateType: "HTML",
+          url: "@Url.Action("BlogComment", new {Id = Model.Id})",
+          success: function(result) {
+              $("#comment-create").html(result);
+          }
+      });
+    });
+  });
+</script>
+
 <div class="container">
     <h1>@Model.Title</h1>
     <h5 class="timestamp" value="@Model.Date"></h5>
@@ -16,6 +31,11 @@
     @if (User.Identity.IsAuthenticated)
     {
         <input type="button" class="btn" value="Edit" onclick="location.href='@Url.Action("Edit", new {Id = Model.Id})'" />
+        <input type="button" class="btn btn-info" type="button" id="make-comment" value="Add Comment" />
         <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", new {Id = Model.Id})'" />
     }
+    <div id="comment-box">
+      <div id="comment-create"></div>
+      <div id="comment-list"></div>
+    </div>
 </div>

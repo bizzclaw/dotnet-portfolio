@@ -1,0 +1,26 @@
+@model Portfolio.ViewModels.BlogCommentViewModel
+
+@{Model.BlogComment.BlogPostId = Model.BlogPost.Id;}
+
+@using (Html.BeginForm("BlogComment", "Blog", FormMethod.Post))
+{
+
+  @Html.HiddenFor(vm => vm.BlogComment.BlogPostId)
+  <div class="form-group">
+      @Html.LabelFor(vm => vm.BlogComment.Author)
+      @Html.TextBoxFor(vm => vm.BlogComment.Author, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+      @Html.LabelFor(vm => vm.BlogComment.Text)
+      @Html.TextAreaFor(vm => vm.BlogComment.Text, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+      @Html.LabelFor(vm => vm.BlogComment.ContactInfo)
+      (Contact Info will not display Publically)
+      @Html.TextAreaFor(vm => vm.BlogComment.Text, new { @class = "form-control" })
+  </div>
+
+  <input type="submit" class="btn" value="Post" />
+}

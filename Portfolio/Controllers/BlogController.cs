@@ -7,6 +7,7 @@ using Portfolio.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Portfolio.ViewModels;
 
 namespace Portfolio.Controllers
 {
@@ -100,6 +101,24 @@ namespace Portfolio.Controllers
         public IActionResult BlogPreview()
         {
             return View(_db.blogposts.OrderByDescending(m => m.Id).Skip(0).Take(3));
+        }
+
+        public IActionResult BlogComment(int id = 1)
+        {
+          BlogPost post = _db.blogposts.FirstOrDefault(b => b.Id == id);
+           BlogCommentViewModel blogCommentView = new BlogCommentViewModel {
+            BlogPost = post,
+            BlogComment = new BlogComment()
+          };
+          return View(blogCommentView);
+        }
+
+        [HttpPost]
+        public IActionResult BlogComment(BlogCommentViewModel blogCommentView)
+        {
+          _db.blogcomments.Add(blogCommentView.BlogComment);
+          _db.SaveChanges();
+          return RedirectToAction("Details", new { Id = blogCommentView.BlogComment.BlogPostId });
         }
     }
 }

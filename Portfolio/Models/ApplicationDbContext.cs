@@ -7,6 +7,7 @@ namespace Portfolio.Models
 	{
         public DbSet<PageInfo> pageinfo { get; set; }
         public DbSet<BlogPost> blogposts { get; set; }
+        public DbSet<BlogComment> blogcomments { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
 		{
