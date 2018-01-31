@@ -16,7 +16,7 @@ namespace Portfolio.Controllers
     {
         // GET: /<controller>/
 
-        public async Task<PageInfo> GetMainInfo()
+        public async Task<PageInfo> GetMainInfo(bool ignoreProjects = false)
         {
             PageInfo info = _db.pageinfo.FirstOrDefault();
 
@@ -24,10 +24,14 @@ namespace Portfolio.Controllers
             {
                 Id = -1,
                 Title = "Programming Student",
-                MainInfo = "I've been coding since 2013 where I started by writing games in Lua. I have a passion for creating robust and flexible systems to support accessibility and security. I'm excited to bring my experience from working on humble project into working on something completely new."
+                MainInfo = "I've been coding since 2013 where I started by writing games in Lua. I have a passion for creating robust and flexible systems to support accessibility and security. I'm excited to bring my experience from working on humble project into working on something completely new.",
+                GitHub = "bizzclaw",
+                LinkedIn = "jtomlinsonpdx"
             };
-
-            info.Projects = await GitHub.GetProjects(3);
+            if (!ignoreProjects)
+            {
+                info.Projects = await GitHub.GetProjects(info.GitHub, 3);
+            }     
             return info;
         }
 
@@ -45,9 +49,9 @@ namespace Portfolio.Controllers
             return View(await GetMainInfo());
         }
 
-        public IActionResult UpdateInfo()
+        public async Task<IActionResult> UpdateInfo()
         {
-            return View(GetMainInfo());
+            return View(await GetMainInfo(true));
         }
 
         [HttpPost]

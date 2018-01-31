@@ -9,23 +9,30 @@ namespace Portfolio.Models
 {
     public class GitHub
     {
-        public static async Task<List<Project>> GetProjects(int count)
+        public static async Task<List<Project>> GetProjects(string userName, int count)
         {
-            string userName = "bizzclaw"; // temp until I can save it to pageInfo.
 
-            var client = new RestClient("https://api.github.com");
-            var request = new RestRequest("/search/repositories", Method.GET)
-                .AddHeader("Accept", "application/vnd.github.v3+json")
-                .AddHeader("User-Agent", userName)
-                .AddParameter("q", $"user:{userName} fork:true")
-                .AddParameter("order", "desc")
-                .AddParameter("sort", "stars");
-            var response = await GetResponseContentAsync(client, request) as RestResponse;
+            try
+            {
+                var client = new RestClient("https://api.github.com");
+                var request = new RestRequest("/search/repositories", Method.GET)
+                    .AddHeader("Accept", "application/vnd.github.v3+json")
+                    .AddHeader("User-Agent", userName)
+                    .AddParameter("q", $"user:{userName} fork:true")
+                    .AddParameter("order", "desc")
+                    .AddParameter("sort", "stars");
+                var response = await GetResponseContentAsync(client, request) as RestResponse;
 
-            JObject resultJSON = JsonConvert.DeserializeObject<JObject>(response.Content);
-            IQueryable<Project> projectsJSON = JsonConvert.DeserializeObject<List<Project>>(resultJSON["items"].ToString()).AsQueryable();
+                JObject resultJSON = JsonConvert.DeserializeObject<JObject>(response.Content);
 
-            return projectsJSON.Take(count).ToList();
+                IQueryable<Project> projectsJSON = JsonConvert.DeserializeObject<List<Project>>(resultJSON["items"].ToString()).AsQueryable();
+
+                return projectsJSON.Take(count).ToList();
+            }
+            catch
+            {
+                return new List<Project> { };
+            }
         }
 
         public static Task<IRestResponse> GetResponseContentAsync(RestClient client, IRestRequest request)

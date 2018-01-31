@@ -61,6 +61,8 @@
             </div>
             <div class="info-body">
                 <h2>@Model.Title</h2>
+                <h4 class="clickable" onclick="location.href='https://github.com/@Model.GitHub'">Github</h4>
+                <h4 class="clickable" onclick="location.href='https://linkedin.com/in/@Model.LinkedIn'">LinkedIn</h4>
                 <p>@Model.MainInfo</p>
 
                 @if (User.Identity.IsAuthenticated)
@@ -83,7 +85,7 @@
                 <h2>Github Projects</h2>
                 @foreach (var project in Model.Projects) 
                 {
-                    <h1>@project.Name</h1>
+                    <h2 class="clickable" onclick="location.href='@project.Html_Url'">@project.Name</h2>
 
                 }  
             </div>

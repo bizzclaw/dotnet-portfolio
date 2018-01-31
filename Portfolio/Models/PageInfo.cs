@@ -16,6 +16,8 @@ namespace Portfolio.Models
         public string Title { get; set; }
         [Column(TypeName = "text")]
         public string MainInfo { get; set; }
+        public string GitHub { get; set; }
+        public string LinkedIn { get; set; }
 
         [NotMapped]
         public List<Project> Projects;
